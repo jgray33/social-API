@@ -1,6 +1,6 @@
-const { Schema, Types, ObjectId } = require("mongoose")
+const mongoose = require("mongoose")
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, required: true, trim: true },
   email: {
     type: String,
@@ -16,12 +16,19 @@ const userSchema = new Schema({
   thoughts: [{
       text: String,
       postedBy: {
-          type: Schema.Types.ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "Thought"
       }
   }]
 });
 
-const User = model("user", userSchema)
+const User = mongoose.model("user", userSchema)
+
+User.create(
+    {  
+        username: "Julia",
+        email: "julia.gray30@gmail.com",
+            }
+)
 
 module.exports = User
