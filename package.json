@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jgray33/social-API#readme",
   "dependencies": {
     "express": "^4.18.1",
+    "moment": "^2.29.3",
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.2"
   }
