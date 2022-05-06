@@ -1,22 +1,14 @@
 const express = require("express");
-const mongodb = require("mongodb").MongoClient;
+const db = require("./config/connection")
 
-const app = express();
-const port = 3001;
+const PORT = process.env.PORT || 3001;
+const app = express()
 
-const connectionStringURI = "mongodb://localhost:27017/socialDB";
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
 
-let db;
-
-mongodb.connect(
-  connectionStringURI,
-  { useNewUrlParser: true, userUnifiedTopology: true },
-  (err, client) => {
-    db = client.db();
-       app.listen(port, () => {
-      console.log(`App listening at http://localhost:${port}`);
-    });
-  }
-);
-
-app.use(express.json());
+db.once("open", () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}`)
+  })
+})
