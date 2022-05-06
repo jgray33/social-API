@@ -1,0 +1,24 @@
+{
+  "name": "social-api",
+  "version": "1.0.0",
+  "description": "Social network api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgray33/social-API.git"
+  },
+  "author": "Julia Gray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jgray33/social-API/issues"
+  },
+  "homepage": "https://github.com/jgray33/social-API#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongodb": "^4.5.0"
+  }
+}
