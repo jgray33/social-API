@@ -76,5 +76,17 @@ addReaction(req,res) {
     :res.json(thought)
     )
     .catch((err) => res.status(500).json(err))
-}
+},
+deleteReaction(req, res) {
+    Thoughts.findOneAndUpdate(
+        { _id: req.params.thoughtId},
+        {$pull: { reactions: { reactionId: req.body.reactionId} }},
+        { runValidators: true, new: true}
+    )
+    .then((thought) =>
+    !thought
+    ? res.status(404).json({message: "No thought with this Id"})
+    : res.json(thought))
+    .catch((err) => res.status(500).json(err))
+},
 }
