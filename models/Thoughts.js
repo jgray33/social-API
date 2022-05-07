@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const moment = require("moment")
 
 
 const reactionSchema = new mongoose.Schema({
@@ -18,7 +19,7 @@ const reactionSchema = new mongoose.Schema({
     createdAt: {
         type: Date, 
         default: Date.now,
-        // get: dateFormat
+        get: (createdAtVal) => moment(createdAtVal).format("MM-DD-YYY [at] hh:mm a")
     }
 })
 
@@ -32,7 +33,7 @@ const thoughtsSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    // get: dateFormat,
+    get: (createdAtVal) => moment(createdAtVal).format("MM-DD-YYY [at] hh:mm a")
   },
   username: {
     type: String,
@@ -51,9 +52,6 @@ thoughtsSchema.virtual("reactionCount").get(function(){
     return this.reactions.length
 })
 
-// function dateFormat(dateFormat) {
-//   return m(Date).format("DD-MM-YYYY");
-// }
 
 const Thoughts = mongoose.model("thoughts", thoughtsSchema)
 
