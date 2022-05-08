@@ -19,7 +19,7 @@ const reactionSchema = new mongoose.Schema({
     createdAt: {
         type: Date, 
         default: Date.now,
-        get: (createdAtVal) => moment(createdAtVal).format("MM-DD-YYY [at] hh:mm a")
+        get: (createdAtVal) => moment(createdAtVal).format("MM-DD-YYYY [at] hh:mm a")
     }
 })
 
@@ -33,7 +33,7 @@ const thoughtsSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    get: (createdAtVal) => moment(createdAtVal).format("MM-DD-YYY [at] hh:mm a")
+    get: (createdAtVal) => moment(createdAtVal).format("MM-DD-YYYY [at] hh:mm a")
   },
   username: {
     type: String,
